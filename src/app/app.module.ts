@@ -8,6 +8,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorComponent } from './error/error.component';
+import { ListTodosComponent } from './list-todos/list-todos.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
     WelcomeComponent,
     LoginComponent,
     ErrorComponent,
+    ListTodosComponent,
   ],
   imports: [
     BrowserModule,
