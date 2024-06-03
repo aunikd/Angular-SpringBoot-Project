@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-welcome',
@@ -8,14 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WelcomeComponent implements OnInit {
   message = ''
-  name=''
-  constructor(private route:ActivatedRoute) { }
+  name='rocky'
+  constructor(private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
     //console.log(this.message)
     this.name = this.route.snapshot.params['name'] ;
     console.log(this.name)
+   
+  }
+
+  showTodo() {
+    this.router.navigate(['todos',this.name])
 
   }
 
