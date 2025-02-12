@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TodoDataService } from '../service/data/todo-data.service';
 
 export class Todo {
   constructor(    
@@ -21,27 +22,21 @@ export class ListTodosComponent implements OnInit {
   message = ''
   name=''
 
-  todos = [
-    new Todo(1,'Learn to Drive', false,new Date()),
-    new Todo(2,'Learn to Code',false,new Date())
+  todos: Todo[] = [];
 
-  //   {
-  //     id : '1',
-  //     desc : 'Learn to Drive'
-  // },
-  //     {
-  //     id : '2',
-  //     desc : 'Learn to Code'
-  //   }
-  ]
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute,
+    private todoService:TodoDataService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
-        //console.log(this.message)
-        this.name = this.route.snapshot.params['name'] ;
-        console.log(this.name)
+    this.todoService.retrieveAllTodos('rocky').subscribe(
+      response =>{
+        console.log(response)
+        this.todos = response;
+      }
+    )
+
   }
 
 }

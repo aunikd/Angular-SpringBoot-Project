@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginErrorMsg = 'Invalid Credentials. Username or Password maybe incorrect'
   invalidLogin=false
   username='rocky'
-  password=''
+  password='pass123'
   constructor(private router: Router, 
     private hardcodedAuthenticationService: HardcodedAuthenticationService) { }
 

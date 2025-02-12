@@ -4,14 +4,14 @@
             <a href="https://www.in28min.com" class="navbar-brand">in28min</a></div>
 
         <ul class="navbar-nav">
-            <li><a routerLink="/welcome/rocky" class="nav-link">Home</a></li>
-            <li><a href="/todos/rocky" class="nav-link">Todos</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/welcome/rocky" class="nav-link">Home</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" href="/todos" class="nav-link">Todos</a></li>
 
         </ul>
 
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li><a href="/src/app/list-todos/list-todos.component.html" class="nav-link">Login</a></li>
-            <li><a href="/src/app/list-todos/list-todos.component.html" class="nav-link">Logout</a></li>
+            <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" href="/" class="nav-link">Login</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" href="/logout" class="nav-link">Logout</a></li>
         </ul>
 
     </nav>

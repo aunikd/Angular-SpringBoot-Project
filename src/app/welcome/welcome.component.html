@@ -1,5 +1,19 @@
 <h1>Welome {{name}}</h1>
 
 <div class="container">
-Manage Todos: <a routerLink="/todos/{{name}}" onclick="showTodo()"> Link </a>   
+Manage Todos: <a routerLink="/todos" onclick="showTodo()"> Link </a>   
+</div>
+
+<div class="container">
+    <button (click)="welcomeMessage()" class=".btn btn-success">Welcome</button>   
+    </div>
+
+<div class="container" *ngIf="beanMessage">
+    <h3>MESSAGE:</h3>
+    {{beanMessage}}
+</div>
+
+<div class="container" *ngIf="errorMessage">
+    <h3>MESSAGE:</h3>
+    {{errorMessage}}
 </div>
