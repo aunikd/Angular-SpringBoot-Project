@@ -11,6 +11,7 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
 })
 export class WelcomeComponent implements OnInit {
   message = ''
+  
   beanMessage:string=''
   errorMessage:string=''
   name='rocky'
@@ -30,8 +31,9 @@ export class WelcomeComponent implements OnInit {
   }
 
   welcomeMessage() {
-    console.log(this.service.executeHelloWorldService());
-    this.service.executeHelloWorldService().subscribe(
+    console.log(this.service.executeHelloWorldBeanService());
+
+    this.service.executeHelloWorldBeanService().subscribe(
       response => this.handleSuccessfulResponse(response.message),
       error => this.handleErrorResponse(error)
     );
@@ -39,8 +41,20 @@ export class WelcomeComponent implements OnInit {
     //console.log("get welcome message")
   }
 
+  welcomeMessagewithParameter(){
+
+    this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
+      
+      response => this.handleSuccessfulResponse(response),
+      
+      error => this.handleErrorResponse(error)
+    );
+
+  }
+
   handleSuccessfulResponse(response:any){
-    this.beanMessage=response;
+    this.beanMessage=response.message;
+    console.log("BEAN MESSAGE")
     console.log(this.beanMessage);
   }
 

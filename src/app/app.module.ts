@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +13,8 @@ import { ListTodosComponent } from './list-todos/list-todos.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
+import { TodoComponent } from './todo/todo.component';
+import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor-basic-auth.service';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { LogoutComponent } from './logout/logout.component';
     MenuComponent,
     FooterComponent,
     LogoutComponent,
+    TodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,9 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  // providers: [{
+  //   // provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true
+  // }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
