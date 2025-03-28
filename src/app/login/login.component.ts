@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginErrorMsg = 'Invalid Credentials. Username or Password maybe incorrect'
   invalidLogin=false
   username='rocky'
-  password='pass123'
+  password='password1'
   constructor(private router: Router, 
     private hardcodedAuthenticationService: HardcodedAuthenticationService,
     private basicAuthenticationService: BasicAuthenticationService
@@ -24,34 +24,57 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleLogin(){
+  // handleLogin(){
 
-    // if(this.username === 'rocky' && this.password === 'pass123'){
-    this.basicAuthenticationService.executeBasicAuthService(this.username,this.password)
-    .subscribe(
-      data => {
-        console.log(data)
-        this.router.navigate(['welcome',this.username])
-        this.invalidLogin=false;
+  //   // if(this.username === 'rocky' && this.password === 'pass123'){
+  //   this.basicAuthenticationService.executeBasicAuthService(this.username,this.password)
+  //   .subscribe(
+  //     data => {
+  //       console.log("data")
+  //       this.router.navigate(['welcome',this.username])
+  //       this.invalidLogin=false;
 
-      },
-      error=>{
-        this.invalidLogin=true;
-      }
-    )
+  //     },
+  //     error=>{
+  //       this.invalidLogin=true;
+  //     }
+  //   )
 
-  }
+  // }
 
   handleAuthLogin(){
 
-      if(this.hardcodedAuthenticationService.authenticate(this.username,this.password)){
+      this.basicAuthenticationService.executeBasicAuthService(this.username,this.password)
+        .subscribe(
+          data => {
+            //console.log("data")
+            console.log("handleAuthLogin"+this.username)
+            this.router.navigate(['welcome',this.username])
+            this.invalidLogin=false;
+    
+          },
+          error=>{
+            this.invalidLogin=true;
+          }
+        )
 
-      this.router.navigate(['welcome',this.username])
-      this.invalidLogin = false
-    } else{
-      this.invalidLogin = true
-    }
-
-    console.log(this.username);
   }
+
+  handleJWTAuthLogin(){
+
+    this.basicAuthenticationService.executeJWTAuthService(this.username,this.password)
+      .subscribe(
+        data => {
+          //console.log("data")
+          console.log("handleAuthLogin"+this.username)
+          this.router.navigate(['welcome',this.username])
+          this.invalidLogin=false;
+  
+        },
+        error=>{
+          this.invalidLogin=true;
+        }
+      )
+
+}
 }

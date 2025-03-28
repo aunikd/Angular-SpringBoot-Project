@@ -26,7 +26,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   showTodo() {
-    this.router.navigate(['todos',this.name])
+    this.router.navigate(['todos'])
 
   }
 

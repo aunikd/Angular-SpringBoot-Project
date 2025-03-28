@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TodoComponent implements OnInit {
 
-  id:number=0;
+  id:number=-1;
   todo!: Todo;
 
   constructor(private todoService: TodoDataService,

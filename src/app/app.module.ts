@@ -36,9 +36,9 @@ import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  // providers: [{
-  //   // provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true
-  // }],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

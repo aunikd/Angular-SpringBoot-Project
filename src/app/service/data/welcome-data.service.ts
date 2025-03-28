@@ -22,20 +22,21 @@ export class WelcomeDataService {
 
   executeHelloWorldServiceWithPathVariable(name: string){
 
-    let basicAuthHeaderString =this.createBasicAuthHttpHeader();
+    // let basicAuthHeaderString =this.createBasicAuthHttpHeader();
 
-    let header = new HttpHeaders(
-      {Authorization:basicAuthHeaderString}
-    )
+    // let header = new HttpHeaders(
+    //   {Authorization:basicAuthHeaderString}
+    // )
     return this.http.get<HelloWorldBean>(`http://localhost:9090/hello-world/path-variable/${name}`,
-      {headers:header});
+      // {headers:header}
+    );
   }
 
-  createBasicAuthHttpHeader(){
-    let username = 'rocky'
-    let password = 'password1'
-    let basicAuthHeaderString = 'Basic'+ window.btoa(username+':'+password);
-    return basicAuthHeaderString;
-  }
+  // createBasicAuthHttpHeader(){
+  //   let username = 'rocky'
+  //   let password = 'password1'
+  //   let basicAuthHeaderString = 'Basic'+ window.btoa(username+':'+password);
+  //   return basicAuthHeaderString;
+  // }
 
 }

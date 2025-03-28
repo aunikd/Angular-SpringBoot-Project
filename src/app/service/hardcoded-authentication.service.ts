@@ -10,7 +10,7 @@ export class HardcodedAuthenticationService {
 
   authenticate(username: string, password: string) {
     // console.log('BEFORE '+this.isUserLoggedIn());
-    if (username === 'rocky' && password === 'pass123') {
+    if (username === 'rocky' && password === 'password1') {
       sessionStorage.setItem('authenticateUser', username);
       // console.log('AFTER '+this.isUserLoggedIn());
       console.log("LOGED IN TRUE")
